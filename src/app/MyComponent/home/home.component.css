@@ -1,0 +1,25 @@
+.home-con{
+  display: flex;
+  margin: auto;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.entry-link{
+  text-decoration: none;
+  font-size: 4vw;
+  background-color: rgb(37, 141, 231);
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+
+  margin: 40px;
+
+  text-align: center;
+  width: 50vw;
+}

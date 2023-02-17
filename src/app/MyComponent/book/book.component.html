@@ -1,0 +1,65 @@
+
+<div *ngIf="!isCompleted">
+  <div>
+    <h1 style="text-align: center;" >Book Your Tickets</h1>
+    <form (ngSubmit)="getTicket()">
+      <label for="From">From Station</label>
+      <select id="country" name="startStation" [(ngModel)]="startStation">
+        <option *ngFor="let station of stations"
+          [value]="station"
+        >
+            {{station}}
+        </option>
+      </select>
+      <br>
+      <label for="From station">To Station</label>
+      <select id="country" name="endStation" [(ngModel)]="endStation">
+        <option *ngFor="let station of stations"
+          [value]="station"
+        >
+            {{station}}
+        </option>
+      </select>
+      <label for="count">Person Count</label><br>
+      <input type="number" id="myNumber" name="personCount" [(ngModel)]="personCount"  value="1">
+      <label for="html">Do you want Return Ticket?</label>
+      <input type="checkbox" id="css" name="isReturn"  [(ngModel)]="isReturn" value="" >
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+
+</div>
+
+
+<div *ngIf="isCompleted">
+  <div class="ticket-box" >
+    <div>Ticket id : {{ticket.id}}</div><hr>
+    <div>Valid Form : {{ticket.validFrom}}</div><hr>
+    <div>Valid Till : {{ticket.validTo}}</div><hr>
+    <div>Total Person : {{ticket.personCount}}</div><hr>
+    <div>Return :
+        <span *ngIf="ticket.isReturn" > This is a Return ticket</span>
+        <span *ngIf="!ticket.isReturn" > This is not a Return ticket</span>
+    </div><hr>
+    <div>Ticket Price: {{ticket.ticketPrice}}</div><hr>
+    <div>Total Stations: {{ticket.stationCount}}</div><hr>
+    <div>Source: {{ticket.source}}</div><hr>
+    <div>Destination: {{ticket.destination}}</div><hr>
+  </div>
+  <div>
+    <div *ngFor="let s of ticket.stations" class="station-names" >
+
+      <div *ngIf="s.isTerminal">
+        <div class="station-name terminal-Station">
+          {{s.stationName}}
+        </div>
+      </div>
+      <div *ngIf="!s.isTerminal">
+        <div class="station-name normal-station">
+          {{s.stationName}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

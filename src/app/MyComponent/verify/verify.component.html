@@ -1,0 +1,26 @@
+<div *ngIf="!isDone">
+  <div>
+    <h1 style="text-align: center">Verify Ticket</h1>
+    <form (ngSubmit)="accessVID()">
+      <label for="">Paste the ticket id</label>
+      <input type="text" name="vid" [(ngModel)]="vid" />
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+<div *ngIf="isDone">
+  <div class="ticket-box" >
+    <div>Ticket id : {{ticket.id}}</div><hr>
+    <div>Valid Form : {{ticket.validFrom}}</div><hr>
+    <div>Valid Till : {{ticket.validTo}}</div><hr>
+    <div>Total Person : {{ticket.personCount}}</div><hr>
+    <div>Return :
+        <span *ngIf="ticket.isReturn" > This is a Return ticket</span>
+        <span *ngIf="!ticket.isReturn" > This is not a Return ticket</span>
+    </div><hr>
+    <div>Ticket Price: {{ticket.ticketPrice}}</div><hr>
+    <div>Total Stations: {{ticket.stationCount}}</div><hr>
+    <div>Source: {{ticket.source}}</div><hr>
+    <div>Destination: {{ticket.destination}}</div><hr>
+  </div>
+</div>
